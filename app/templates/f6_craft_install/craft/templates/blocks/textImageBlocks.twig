@@ -1,0 +1,33 @@
+{# close the current column #}
+    </div>{# /columns #}
+</div>{# /row #}
+
+<section class="text-image-blocks">
+	{% for row in block.textImageBlock %}
+		{% set image = row.image.first() %}
+		{% set transImage = craft.imager.transformImage(image,
+		    [
+		        { width: 768},
+		        { width: 460},
+		        { width: 384},
+		    ], {
+		} ) %}
+		<div class="row" data-equalizer data-equalize-on="medium">
+			<div class="medium-4 {% if loop.index is divisibleby(2) %}medium-push-7{% else %}medium-offset-1{% endif %} columns image-block" style="background-image: url('{{ transImage[2].url }}'); background-size: cover; background-position: {{ image.focusPctX }}% {{ image.focusPctY }}%;" data-interchange="[{{ transImage[2].url }}, small], [{{ transImage[1].url }}, medium], [{{ transImage[0].url }}, large]" data-equalizer-watch>
+			</div>
+			<div class="medium-5 {% if loop.index is divisibleby(2) %}medium-pull-2{% endif %} end columns text-block" data-equalizer-watch>
+				<div class="text-block-content">
+					{{ row.copy|typogrify }}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</section>
+{# open an new centered column #}
+<div class="row">
+    <div class="medium-8 medium-centered columns">
+
+
+
+
+

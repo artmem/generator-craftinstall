@@ -16,7 +16,7 @@
   "author": "nystudio107",
   "license": "MIT",
   "dependencies": {
-	"ncp": "^2.0.0",
+    "ncp": "^2.0.0",
     "chalk": "^1.1.1",
     "download": "^4.2.1",
     "inflection": "^1.7.1",

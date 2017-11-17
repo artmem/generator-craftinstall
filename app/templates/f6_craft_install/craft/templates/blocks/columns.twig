@@ -1,0 +1,54 @@
+
+{% if block.numberOfColumns > "2" %}
+{# close the current column and row and begin a new full-width row #}
+	        </div>{# /columns #}
+        </div>{# /row #}
+	<div class="row columns">
+{% endif %}
+
+{% if block.numberOfColumns == "4" %}
+	{% set upx = "2 large-up-4" %}
+{% else %}
+	{% set upx = block.numberOfColumns %}
+{% endif %}
+
+
+
+<div class="row medium-up-{{ upx }}" data-equalizer data-equalize-by-row="true">
+	{% for col in block.columns.columns %}
+		<div class="column column-block" data-equalizer-watch>
+			{% if col.image|length %}
+				{% set image = col.image.first() %}
+				{% set transImage = craft.imager.transformImage(image,
+				    [
+				        { width: 1440, jpegQuality: 80, allowUpscale: true},
+				        { width: 768},
+				        { width: 485},
+				        { width: 380},
+				    ], {
+				} ) %}
+				{% if transImage is not empty %}
+				    <figure class="col-image">
+				        <picture>
+				            <source media="(min-width: 420px)" srcset="{{ transImage[2].url }}">
+				            <img src="{{ transImage[3].url }}" alt="{{ image.title }}">
+				        </picture>
+				    </figure>
+				{% endif %}
+			{% endif %}
+			{{ col.copy|typogrify }}
+		</div>
+	{% endfor %}
+</div>
+
+{% if block.numberOfColumns > "2" %}
+    {# close the full-width row and open an new centered column #}
+	</div>
+    <div class="row">
+        <div class="medium-8 medium-centered columns">
+{% endif %}
+
+
+
+
+

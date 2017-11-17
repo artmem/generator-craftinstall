@@ -1,0 +1,11 @@
+{
+    "name": "<%= appName %>",
+    "title": "build assets",
+    "version": "1.0.0",
+    "dist_path": "public/",
+    "build_path": "build/",
+    "template_path": "craft/templates/",
+    "site_url": "http://<%= appName %>.dev/",
+    "devDependencies": {
+    }
+}

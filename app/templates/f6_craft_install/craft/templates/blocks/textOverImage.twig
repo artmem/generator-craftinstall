@@ -1,0 +1,21 @@
+{% set image = block.backgroundImage.first() %}
+
+{% set transImage = craft.imager.transformImage(image,
+    [
+        { width: 1440, jpegQuality: 80, allowUpscale: true},
+        { width: 1024},
+        { width: 768},
+    ], {
+} ) %}
+
+
+<section class="textOverImage" style="background-image: url('{{ transImage[2].url }}'); background-size: cover; background-position: {{ image.focusPctX }}% {{ image.focusPctY }}%;" data-interchange="[{{ transImage[2].url }}, small], [{{ transImage[1].url }}, medium], [{{ transImage[0].url }}, large]">
+	<div class="pad-{{ block.padding }}" style="background: rgba(0,0,0,{{ block.imageOpacity }});">
+		<div class=" quote-{{ block.textPosition }}">
+			{{ block.text|typogrify }}
+			Add a transform to the background image!
+		</div>
+	</div>
+</section>
+
+

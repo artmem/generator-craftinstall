@@ -1,0 +1,12 @@
+{% set batchSize = (block.listItems|length / block.columnCount.value)|round( 1, "floor" ) %}
+<div class="row" >
+	{% for items in block.listItems|batch(batchSize) %}
+		<div class="large-{{ 12 / block.columnCount.value|round(1, 'floor') }} columns">
+			<ul>
+				{% for item in items %}
+					<li>{{ item.itemText }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endfor %}
+</div>

@@ -1,0 +1,180 @@
+{
+    "INSTALL_NAME": "ND Foundation 6 Craft Install",
+    "INSTALL_KEY": "f6_craft_install",
+    "QUESTIONS": [
+        {
+            "name": "appName",
+            "message": "Application name",
+            "default": "testapp"
+        }
+    ],
+    "DOWNLOAD_FILES": [
+        {
+            "name": "Craft CMS",
+            "url": "http://buildwithcraft.com/latest.zip?accept_license=yes"
+        }
+    ],
+    "DELETE_FILES": [
+        {
+            "src": "craft/templates"
+        },
+        {
+            "src": "craft/config/db.php"
+        },
+        {
+            "src": "craft/config/general.php"
+        }
+    ],
+    "MOVE_FILES": [
+        {
+            "src": "public/htaccess",
+            "dest": "public/.htaccess"
+        }
+    ],
+    "TEMPLATE_FILES": [
+        {
+            "src": "_bower.json",
+            "dest": "bower.json"
+        },
+        {
+            "src": "_package.json",
+            "dest": "package.json"
+        },
+        {
+            "src": "craft/config/_db.php",
+            "dest": "craft/config/db.php"
+        },
+        {
+            "src": "craft/config/_general.php",
+            "dest": "craft/config/general.php"
+        }
+    ],
+    "BOILERPLATE_FILES": [
+        {
+            "src": "_gitignore",
+            "dest": ".gitignore"
+        },
+        {
+            "src": "f6/config.yml",
+            "dest": "config.yml"
+        },
+        {
+            "src": "f6/gulpfile.babel.js",
+            "dest": "gulpfile.babel.js"
+        }  
+    ],
+    "BOILERPLATE_DIRECTORIES": [
+        {
+            "src": "craft/templates",
+            "dest": "craft/templates"
+        }
+    ],
+    "MYSQL_DBS": [
+    ],
+    "CRAFT_PLUGINS_DIRECTORY": "craft/plugins",
+    "CRAFT_PLUGINS": [
+        {
+            "name": "Minify",
+            "url": "https://github.com/khalwat/minify.git",
+            "dir": "minify"
+        },
+        {
+            "name": "Cookies",
+            "url": "https://github.com/khalwat/cookies.git",
+            "dir": "cookies"
+        },
+        {
+            "name": "Retour",
+            "url": "https://github.com/nystudio107/retour.git",
+            "dir": "retour"
+        },
+        {
+            "name": "SEOmatic",
+            "url": "https://github.com/nystudio107/seomatic.git",
+            "dir": "seomatic"
+        },
+        {
+            "name": "Hacksaw",
+            "url": "https://github.com/ryanshrum/hacksaw.git",
+            "dir": "hacksaw"
+        },
+        {
+            "name": "Focal Point",
+            "url": "https://github.com/aelvan/FocalPointField-Craft.git",
+            "dir": "focalpointfield",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Imager",
+            "url": "https://github.com/aelvan/Imager-Craft.git",
+            "dir": "imager",
+            "subDirectory": "true"
+        },
+        {
+            "name": "LinkIt",
+            "url": "https://github.com/fruitstudios/LinkIt.git",
+            "dir": "fruitlinkit",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Super Table",
+            "url": "https://github.com/verbb/super-table.git",
+            "dir": "supertable",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Typogrify",
+            "url": "https://github.com/jamiepittock/craft-typogrify.git",
+            "dir": "typogrify",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Embedder",
+            "url": "https://github.com/A-P/Embedder.git",
+            "dir": "embedder",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Field Manager",
+            "url": "https://github.com/engram-design/FieldManager.git",
+            "dir": "fieldmanager",
+            "subDirectory": "true"
+        },
+        {
+            "name": "Listing Section",
+            "url": "https://github.com/davist11/craft-listing-section.git",
+            "dir": "listingsection",
+            "subDirectory": "true"
+        }        
+
+    ],
+    "REMOTE_GIT_ORIGIN": "",
+    "BITBUCKET_ACCOUNT": [
+    ],    
+    "BOWER_OPTIONS": [
+    ],
+    "NPM_OPTIONS": [
+    ],
+    "END_INSTALL_COMMANDS": [
+        {
+            "name": "foundation install",
+            "command": "git clone https://github.com/zurb/foundation-zurb-template f6"
+        },
+        {
+            "name": "npm install",
+            "command": "cd f6; npm install;npm install @fancyapps/fancybox --save;npm install waypoints;npm install slick-carousel"
+        },
+        {
+            "name": "remove Foundaion files",
+            "command": "cd f6; rm config.yml;rm gulpfile.babel.js"
+        },        
+        {
+            "name": "replace Foundaion files",
+            "command": "mv config.yml f6/config.yml;mv gulpfile.babel.js f6/gulpfile.babel.js"
+        },        
+        {
+            "name": "Fin.",
+            "command": "echo 'Fin.'"
+        }
+    ]
+}

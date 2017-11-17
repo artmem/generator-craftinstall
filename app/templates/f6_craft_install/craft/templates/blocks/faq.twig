@@ -1,0 +1,8 @@
+<section>
+  <dl class="faq">
+    {% for row in block.faq %}
+      <dt>{{ row.question }}</dt>
+      <dd>{{ row.answer }}</dd>
+    {% endfor %}
+  </dl>
+</section>

@@ -1,0 +1,26 @@
+
+{% if block.video|length =="2"%}
+	{% set colWidth = "medium-6" %}
+{% elseif block.video|length == "3"%}
+	{% set colWidth = "medium-4" %}
+{% else %}
+	{% set colWidth = "medium-12" %}
+{% endif %}
+
+<div class="row">
+	{% for row in block.video %}
+	<div class="{{ colWidth }} columns">
+		{% if row.videoUrl|length %}
+			<div class="responsive-embed widescreen">
+				{{ row.videoUrl|videoEmbed({ rel:0,color:'white',showinfo:0}) }} 
+			</div>
+		{% endif %}
+		{{ row.videoCaption|typogrify }}
+	</div>
+	{% endfor %}
+</div>
+
+
+
+
+

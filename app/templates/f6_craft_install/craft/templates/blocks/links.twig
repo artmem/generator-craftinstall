@@ -1,0 +1,23 @@
+{% if block.linkDisplay == "buttons" %}
+	<section class="text-center">
+		{% for item in block.links %}        
+			{% if item.linkUrl.type == "asset" %}
+				<a href="{{ item.linkUrl.asset }}" class="button">{{ item.linkUrl.text }} <span class="asset">{{ item.linkUrl.asset.extension|upper }}</span></a>
+			{% else %}
+				<a href="{{ item.linkUrl.url }}" class="button" target="{{ item.linkUrl.target }}" >{{ item.linkUrl.text }}</a>
+			{% endif %}
+		{% endfor %}
+	</section>
+{% else %}
+	<section>
+		<ul>
+			{% for item in block.links %}
+				{% if item.linkUrl.type == "asset" %}
+					<li><a href="{{ item.linkUrl.asset }}">{{ item.linkUrl.text }} <span class="asset">{{ item.linkUrl.asset.extension|upper }}</span></a></li>
+				{% else %}
+					<li><a href="{{ item.linkUrl.url }}" target="{{ item.linkUrl.target }}" >{{ item.linkUrl.text }}</a></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</section>
+{% endif %}

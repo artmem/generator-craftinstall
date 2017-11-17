@@ -1,0 +1,51 @@
+{% set image = block.image.first() %}
+
+{% if block.imagePosition == "full" %}
+{# close the current column and row and begin a new full-width row #}
+	        </div>{# /columns #}
+        </div>{# /row #}
+	<div class="row columns">
+{% endif %}
+
+{% set imageFloat = '' %}
+{% set figureFloatClass = 'figure-' ~ block.imagePosition %}
+{% if block.imagePosition == 'left' or block.imagePosition == 'right' or block.imagePosition == 'center' %}
+    {% set imageFloat = block.imageSize %}
+{% endif %}
+{% set transImage = craft.imager.transformImage(image,
+    [
+        { width: 1440, jpegQuality: 80, allowUpscale: true},
+        { width: 1024},
+        { width: 768},
+    ], {
+} ) %}
+{% if transImage is not empty %}
+    {# Join any classes together for both the figure and the image #}
+    {%- set figureClasses = ['figure'~block.id,figureFloatClass,imageFloat]|join(' ') -%}
+    <figure class="{{ figureClasses }}">
+        {% if block.imagePosition == 'left' or block.imagePosition == 'right' or block.imagePosition == 'center' %}
+            <picture>
+                <source media="(min-width: 420px)" srcset="{{ transImage[2].url }}">
+                <img src="{{ transImage[2].url }}" alt="{{ image.title }}">
+            </picture>
+        {% elseif block.imagePosition == 'full' %}
+            <picture>
+                <source media="(min-width: 1024px)" srcset="{{ transImage[0].url }}">
+                <source media="(min-width: 768px)" srcset="{{ transImage[1].url }}">
+                <img src="{{ transImage[2].url }}" alt="{{ image.title }}">
+            </picture>
+        {% endif %}
+        {% if block.caption %}
+            <figcaption class="caption">{{ block.caption }}</figcaption>
+        {% endif %}
+    </figure>
+{% endif %}
+
+{% if block.imagePosition == "full" %}
+    {# close the full-width row and open an new centered column #}
+	</div>
+    <div class="row">
+        <div class="medium-8 medium-centered columns">
+{% endif %}
+
+

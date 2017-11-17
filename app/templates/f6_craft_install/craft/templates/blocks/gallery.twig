@@ -1,0 +1,18 @@
+<div class="row column">
+	<div class="row small-up-2 medium-up-4 large-up-6">
+		{% for idx, image in block.images %}
+			{% set image = image.images.first() %}
+			{% set transformedImages = craft.imager.transformImage(image,
+				[
+					{ width: 1200, allowUpscale: true},
+					{ width: 300, ratio: 1/1, jpegQuality: 50 },
+				], {
+			} ) %}
+			<div class="column column-block">
+				<a href="{{ transformedImages[0].url }}" data-fancybox="gallery{{ idx }}" class="modal gallery-item" data-url="{{ transformedImages[0].url }}">
+					<img src="{{ transformedImages[1].url }}" alt="{{ image.title }}" />
+				</a> 
+			</div>
+		{% endfor %}
+	</div>
+</div>
