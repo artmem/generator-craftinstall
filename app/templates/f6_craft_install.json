@@ -173,6 +173,10 @@
             "command": "mv config.yml f6/config.yml;mv gulpfile.babel.js f6/gulpfile.babel.js"
         },        
         {
+            "name": "move foundation",
+            "command": "mv f6/* .;mv f6/.* .;rmdir f6"
+        },        
+        {
             "name": "Fin.",
             "command": "echo 'Fin.'"
         }
