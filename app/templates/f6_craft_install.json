@@ -175,6 +175,10 @@
         {
             "name": "move foundation",
             "command": "mv f6/* .;mv f6/.* .;rmdir f6"
+        },  
+        {
+            "name": "make folders",
+            "command": "cd public; mkdir -p /uploads/{images,files}; cd uploads; chmod 755 files; chmod 755 images;"
         },        
         {
             "name": "Fin.",
