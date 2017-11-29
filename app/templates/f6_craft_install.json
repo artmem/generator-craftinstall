@@ -166,7 +166,7 @@
         },
         {
             "name": "remove Foundaion files",
-            "command": "cd f6; rm config.yml;rm gulpfile.babel.js"
+            "command": "cd f6; rm config.yml;rm gulpfile.babel.js; rm -r .git; rm .gitignore"
         },        
         {
             "name": "replace Foundaion files",
